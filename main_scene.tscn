@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3 uid="uid://cget5u7at828r"]
+
+[ext_resource type="Script" path="res://Scripts/CommData.cs" id="1_4vpu5"]
+[ext_resource type="Script" path="res://addons/orbit-controls/orbit-controls.gd" id="1_kq8fe"]
+[ext_resource type="Script" path="res://Scripts/TCPCommunication.cs" id="2_1exqj"]
+[ext_resource type="Script" path="res://Scripts/ToggleColorObject.cs" id="2_c4pq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh6df"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2jjx"]
+material = SubResource("StandardMaterial3D_sh6df")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hvjyb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_bxxkx"]
+sky_material = SubResource("ProceduralSkyMaterial_hvjyb")
+
+[sub_resource type="Environment" id="Environment_rgp2g"]
+background_mode = 2
+sky = SubResource("Sky_bxxkx")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.65
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sypii"]
+albedo_color = Color(0.0705882, 0.447059, 0.309804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_an532"]
+material = SubResource("StandardMaterial3D_sypii")
+
+[node name="Main Scene" type="Node3D"]
+
+[node name="Master" type="Node3D" parent="."]
+
+[node name="CommData" type="Node3D" parent="Master"]
+script = ExtResource("1_4vpu5")
+ReceiveVariables = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="TCPCommunication" type="Node3D" parent="Master" node_paths=PackedStringArray("serverIpAddressText", "serverPortText", "connectButton", "disconnectButton", "commData")]
+script = ExtResource("2_1exqj")
+serverIpAddressText = NodePath("../../UI Control/IpAddressTextEdit")
+serverPortText = NodePath("../../UI Control/PortTextEdit")
+connectButton = NodePath("../../UI Control/Connect")
+disconnectButton = NodePath("../../UI Control/Disconnect")
+commData = NodePath("../CommData")
+
+[node name="UI Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.048
+anchor_bottom = 0.034
+offset_right = 397.704
+offset_bottom = 233.968
+
+[node name="IpAddressTextEdit" type="TextEdit" parent="UI Control"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 25.0
+offset_right = 423.0
+offset_bottom = 53.0
+placeholder_text = "Type your IP"
+
+[node name="Label" type="Label" parent="UI Control"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 27.0
+offset_right = 235.0
+offset_bottom = 53.0
+text = "Target Ip Address:"
+
+[node name="PortTextEdit" type="TextEdit" parent="UI Control"]
+offset_left = 249.0
+offset_top = 75.0
+offset_right = 427.0
+offset_bottom = 103.0
+placeholder_text = "Port"
+
+[node name="Label2" type="Label" parent="UI Control"]
+offset_left = 93.0
+offset_top = 75.0
+offset_right = 233.0
+offset_bottom = 101.0
+text = "Target Ip Address:"
+
+[node name="Connect" type="Button" parent="UI Control"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 119.0
+offset_right = 262.0
+offset_bottom = 163.0
+text = "Connect"
+
+[node name="Disconnect" type="Button" parent="UI Control"]
+offset_left = 286.0
+offset_top = 118.0
+offset_right = 446.0
+offset_bottom = 162.0
+text = "Disconnect"
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("commData", "meshInstance3D")]
+script = ExtResource("2_c4pq8")
+commData = NodePath("../Master/CommData")
+meshInstance3D = NodePath("CubeMesh")
+InactiveColor = Color(0.722793, 0.174612, 0.166425, 1)
+ActiveColor = Color(0.2, 100, 0.65, 1)
+
+[node name="CubeMesh" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109032, 0.740189, 0.0631864)
+mesh = SubResource("BoxMesh_c2jjx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.864661, 0.502356, 0, -0.502356, 0.864661, 0, 1.6134, 2.38894)
+
+[node name="OrbitControls" type="Node3D" parent="."]
+script = ExtResource("1_kq8fe")
+_camera = NodePath("../Camera3D")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_rgp2g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.775135, -0.631724, 0.00946769, -0.411095, 0.515686, 0.75171, -0.479756, 0.578785, -0.659425, 0, 2.4855, 0)
+shadow_enabled = true
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 159.105, -47.0701, -101.979)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475401, -0.264608, 0.640475)
+mesh = SubResource("BoxMesh_an532")
+
+[connection signal="text_changed" from="UI Control/IpAddressTextEdit" to="Master/TCPCommunication" method="SetServerIpAddress"]
+[connection signal="text_changed" from="UI Control/PortTextEdit" to="Master/TCPCommunication" method="SetServerPort"]
+[connection signal="button_down" from="UI Control/Connect" to="Master/TCPCommunication" method="ConnectToTcpServer"]
+[connection signal="button_down" from="UI Control/Disconnect" to="Master/TCPCommunication" method="CloseConnection"]
