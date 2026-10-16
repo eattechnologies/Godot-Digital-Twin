@@ -10,17 +10,33 @@ public partial class TCPCommunication : Node
 	private NetworkStream stream;
 	private Thread clientReceiveThread;
 
+	// UI Elements
+	[Export]
+	private TextEdit serverIpAddressText, serverPortText;
+	[Export]
+	private Button connectButton, disconnectButton;
 	[Export]
 	public String serverIpAddress = "127.0.0.1";
 	[Export]
 	public int serverPort = 50003;
 	private bool isConnected;
+	private volatile bool closingByUser;
 
 	[Export]
 	private CommData commData;
 
+	private void SetServerIpAddress() {serverIpAddress = serverIpAddressText.Text;}
+	private void SetServerPort()
+	{
+		if (int.TryParse(serverPortText.Text, out int port)) serverPort = port;
+	}
+
+
 	private void ConnectToTcpServer()
 	{
+		if (isConnected)
+			return;
+		closingByUser = false;
 		try
 		{
 
@@ -42,9 +58,11 @@ public partial class TCPCommunication : Node
 
 	private void CloseConnection()
 	{
-		stream.Close();
-		socketConnection.GetStream().Close();
-		socketConnection.Close();
+		if (!isConnected)
+			return;
+		closingByUser = true;
+		stream?.Close();
+		socketConnection?.Close();
 		isConnected = false;
 	}
 
@@ -66,9 +84,10 @@ public partial class TCPCommunication : Node
 
 		} catch (Exception e)
 		{
-
 			isConnected = false;
-			GD.Print(e);
+			// Closing the socket on Disconnect aborts the blocking Read; that is expected
+			if (!closingByUser)
+				GD.Print(e);
 		}
 	}
 
@@ -77,11 +96,16 @@ public partial class TCPCommunication : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		
+		serverIpAddressText.Text = serverIpAddress;
+		serverPortText.Text = serverPort.ToString();
 		ConnectToTcpServer();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		connectButton.Visible = !isConnected;
+		disconnectButton.Visible = isConnected;
 	}
 }
