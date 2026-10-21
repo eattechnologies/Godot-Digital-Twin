@@ -6,3 +6,9 @@ bin/
 obj/
 .vs/
 *.bak
+
+# CODESYS per-user options and compile cache
+*.opt
+*.precompilecache
+*.compileinfo
+*.bootinfo
