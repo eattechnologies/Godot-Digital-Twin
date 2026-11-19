@@ -71,6 +71,7 @@ offset_bottom = 53.0
 text = "Target Ip Address:"
 
 [node name="PortTextEdit" type="TextEdit" parent="UI Control"]
+layout_mode = 0
 offset_left = 249.0
 offset_top = 75.0
 offset_right = 427.0
@@ -78,6 +79,7 @@ offset_bottom = 103.0
 placeholder_text = "Port"
 
 [node name="Label2" type="Label" parent="UI Control"]
+layout_mode = 0
 offset_left = 93.0
 offset_top = 75.0
 offset_right = 233.0
@@ -93,6 +95,7 @@ offset_bottom = 163.0
 text = "Connect"
 
 [node name="Disconnect" type="Button" parent="UI Control"]
+layout_mode = 0
 offset_left = 286.0
 offset_top = 118.0
 offset_right = 446.0
